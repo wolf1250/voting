@@ -4,52 +4,83 @@ ol, ul {
 	list-style:none;
 }
 
-#MENU, .menu {
-	width:1000px;
-	height:260px;
+.menu {
+	width:800px;
+	height:190px;
     display:inline-block;
-    margin-left: 50px;
+    margin-left: 160px;
 }
-#MENU ul, .menu ul {
-	width:990px;
+.menu ul, .menu ul {
+	width:800px;
 	height:160px;
 	margin:0 auto;
 	overflow:hidden;
 }
-#MENU li, .menu li {
+.menu li, .menu li {
 	float:left;
 	margin-right:5px;
-	margin-top:100px;
+	margin-top:56px;
 }
-#MENU li a, .menu li a {
+.menu li a, .menu li a {
 	display:block;
 	width:160px;
 	height:160px;
-	text-indent:-9999px;	
-}
-#MENU li.css a {
-	background-image:url(../images/bt_css.gif);
-}
-#MENU li.dreamweaver a {
-	background-image:url(../images/bt_dreamweaver.gif);
-}
-#MENU li.flash a {
-	background-image:url(../images/bt_flash_adv.gif);
-}
-#MENU li.js a {
-	background-image:url(../images/course_javascript.gif);
-}
-#MENU li.css3 a {
-	background-image:url(../images/course_css3.gif);
-}
-#MENU li.photoshop a {
-	background-image:url(../images/bt_photoshop2.gif);
+	text-indent:-9999px;
+	transition: 0.5s;
 }
 
+.menu li.p1 a {
+	background-image:url(../images/tab/tab_p1.png);
+}
+.menu li.p2 a {
+	background-image:url(../images/tab/tab_p2.png);
+}
+.menu li.p3 a {
+	background-image:url(../images/tab/tab_p3.png);
+}
+.menu li.p4 a {
+	background-image:url(../images/tab/tab_p4.png);
+}
+.menu li.p5 a {
+	background-image:url(../images/tab/tab_p5.png);
+}
+.menu li.p6 a {
+	background-image:url(../images/tab/tab_p6.png);
+}
+.menu li.p7 a {
+	background-image:url(../images/tab/tab_p7.png);
+}
+.menu li.p8 a {
+	background-image:url(../images/tab/tab_p8.png);
+}
+.menu li.p9 a {
+	background-image:url(../images/tab/tab_p9.png);
+}
+.menu li.p10 a {
+	background-image:url(../images/tab/tab_p10.png);
+}
+.menu li.p11 a {
+	background-image:url(../images/tab/tab_p11.png);
+}
+.menu li.p12 a {
+	background-image:url(../images/tab/tab_p12.png);
+}
+.menu li.p13 a {
+	background-image:url(../images/tab/tab_p13.png);
+}
+.menu li.p14 a {
+	background-image:url(../images/tab/tab_p14.png);
+}
+.menu li.p15 a {
+	background-image:url(../images/tab/tab_p15.png);
+}
+.menu li.p16 a {
+	background-image:url(../images/tab/tab_p16.png);
+}
 
-#MENU h1, .menu h1 {
+.menu h1 {
 	width:1000px;
-	height:100px;
+	height:30px;
 	background-image:url(../images/bg.jpg);
 	text-indent:-9999px;
 }

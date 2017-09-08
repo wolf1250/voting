@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -47,7 +46,7 @@
         <div class="media">
             <div class="media-left">
                 <a href="#">
-                    <img class="media-object" src="./images/bt_dreamweaver.gif" alt="...">
+                    <img class="media-object" src="./resources/images/bt_dreamweaver.gif" alt="...">
                 </a>
             </div>
             <div class="media-body">
@@ -67,7 +66,7 @@
         <div class="media">
             <div class="media-left">
                 <a href="#">
-                    <img class="media-object" src="./images/bt_dreamweaver.gif" alt="...">
+                    <img class="media-object" src="./resources/images/bt_dreamweaver.gif" alt="...">
                 </a>
             </div>
             <div class="media-body">
@@ -86,7 +85,7 @@
         <div class="media">
             <div class="media-left">
                 <a href="#">
-                    <img class="media-object" src="./images/bt_dreamweaver.gif" alt="...">
+                    <img class="media-object" src="./resources/images/bt_dreamweaver.gif" alt="...">
                 </a>
             </div>
             <div class="media-body">
@@ -105,7 +104,7 @@
         <div class="media">
             <div class="media-left">
                 <a href="#">
-                    <img class="media-object" src="./images/bt_dreamweaver.gif" alt="...">
+                    <img class="media-object" src="./resources/images/bt_dreamweaver.gif" alt="...">
                 </a>
             </div>
             <div class="media-body">
@@ -143,8 +142,12 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" src="./js/bootstrap.min.js"></script>
-<script src="../js/star-rating.js" type="text/javascript"></script>
+<script src="./resources/js/jquery.cookie.js" type="text/javascript"></script>
+<script src="./resources/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="./resources/js/star-rating.js" type="text/javascript"></script>
+<script src="./resources/js/sockjs.min.js" type="text/javascript"></script>
+<script src="./resources/js/stomp.min.js" type="text/javascript"></script>
+<script src="./resources/js/my_socket.js" type="text/javascript"></script>
 <script>
         $(function() {
             $('.kv-ltr-theme-fa-star').rating({
@@ -157,9 +160,11 @@
 
 
             $('.submit-btn').on('click', function() {
+                console.log($.cookie("v-token"));
                 var submit_data ={project_id:2, key_business:2, priority:3};
                 $.ajax({
-                    url: 'http://localhost:8080/voting_test',
+                    url: './voting_test',
+                    method: 'POST',
                     contentType: 'application/json',
                     data: submit_data,
                     dataType: 'json',
@@ -172,7 +177,6 @@
                     complete: function(jqXHR, textStatus) {
 
                     },
-
                 });
             });
         });
