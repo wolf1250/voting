@@ -1,0 +1,60 @@
+#BOX {
+	width:140px;
+    display:inline-block;
+    padding: 0
+}
+
+#BOX ul {
+	list-style:none;
+	height:180px;
+	width:138px;
+}
+#BOX li {
+	display:block;
+	height:50px;
+	width:138px;
+	float:left;
+	margin-left:8px;
+	position:relative;
+	overflow:hidden;
+	margin-top:3px;
+}
+#BOX li a {
+	position:relative;
+	display:block;
+	height:50px;
+	width:138px;
+	position:absolute;
+	left:-110px;
+	color:#FFF;
+}
+
+li a span {
+	font-size: 1rem;
+    position: absolute;
+    top: 18px;
+    left: 18px;
+	
+}
+
+#BOX ul li:last-child a span {
+    font-size: 1rem;
+    position: absolute;
+    top: 18px;
+    left: 8px;
+}
+
+#BOX li#AA a {
+	background-image:url(../images/tab-1.png);
+}
+#BOX li#BB a {
+	background-image:url(../images/tab-2.png);
+}
+#BOX li#CC a {
+	background-image:url(../images/tab-3.png);
+}
+#BOX li#DD a {
+	background-image:url(../images/tab-4.png);
+}
+#BOX li a:hover {
+}
