@@ -31,18 +31,18 @@
 }
 
 li a span {
-	font-size: 1rem;
+	font-size: 17px;
     position: absolute;
-    top: 18px;
-    left: 18px;
+    top: 12px;
+    left: 12px;
 	
 }
 
 #BOX ul li:last-child a span {
-    font-size: 1rem;
+    font-size: 17px
     position: absolute;
-    top: 18px;
-    left: 8px;
+    top: 12px;
+    left: 12px;
 }
 
 #BOX li#AA a {

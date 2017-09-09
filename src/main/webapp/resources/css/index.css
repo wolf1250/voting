@@ -12,7 +12,7 @@ ol, ul {
 }
 .menu ul, .menu ul {
 	width:800px;
-	height:160px;
+	height:153px;
 	margin:0 auto;
 	overflow:hidden;
 }
@@ -24,7 +24,7 @@ ol, ul {
 .menu li a, .menu li a {
 	display:block;
 	width:160px;
-	height:160px;
+	height:153px;
 	text-indent:-9999px;
 	transition: 0.5s;
 }
