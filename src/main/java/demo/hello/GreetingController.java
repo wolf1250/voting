@@ -35,14 +35,6 @@ public class GreetingController {
         return new Greeting("Hello, " + message.getName() + "!");
     }
 
-    @MessageMapping("/demo/test")
-    @SendTo("/topic/score1")
-    public Greeting score1(HelloMessage message) throws Exception {
-        Thread.sleep(1000); // simulated delay
-        System.out.println("websocket test");
-        return new Greeting("Hello, " + message.getName() + "!");
-    }
-
 
     @RequestMapping("/voting1")
     public String toVotingPage(HttpServletRequest request, HttpServletResponse response, Model model) {
