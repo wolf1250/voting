@@ -158,12 +158,18 @@
 
             $('.submit-btn').on('click', function() {
                 console.log($.cookie("v-token"));
-                var submit_data ={project_id:2, key_business:2, priority:3};
+
+                var submit_data = {};
+                submit_data.project_id = 2;
+                submit_data.key_business = 2;
+                submit_data.priority = 3;
+                console.log(JSON.stringify(submit_data));
+
                 $.ajax({
                     url: './voting_test',
                     method: 'POST',
                     contentType: 'application/json',
-                    data: submit_data,
+                    data: JSON.stringify(submit_data),
                     dataType: 'json',
                     error: function(jqXHR, textStatus, errorThrown) {
 
