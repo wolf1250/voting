@@ -9,10 +9,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 @RestController
 public class TestController {
@@ -25,6 +22,8 @@ public class TestController {
 
     @Autowired
     private ProjectDAO projectDAO;
+
+    private static String DOMAIN = "localhost:8080";
 
     @RequestMapping("/test_send")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
@@ -50,20 +49,56 @@ public class TestController {
         System.out.println(payload);
 
         Result item = new Result();
-        item.setProjectID((Integer)payload.get("project_id"));
-        item.setKeyBusiness((Integer)payload.get("key_business"));
-        item.setPriority((Integer)payload.get("priority"));
+        item.setProjectID((Integer) payload.get("project_id"));
+        item.setKeyBusiness((Integer) payload.get("key_business"));
+        item.setPriority((Integer) payload.get("priority"));
         item.setModified(new Timestamp(new Date().getTime()));
 
         int res = resultDAO.create(item);
         return new SubmitResult(res);
     }
 
+    @RequestMapping("/test_get_score")
+    public List<Score> testGetScore(@RequestParam(value = "menu", defaultValue = "World") String menu) {
+        System.out.println("menu :: " + menu);
+        List<Score> rv = new ArrayList<Score>();
+        rv.add(new Score(new Random().nextInt(100)));
+        rv.add(new Score(new Random().nextInt(100)));
+        rv.add(new Score(new Random().nextInt(100)));
+        rv.add(new Score(new Random().nextInt(100)));
+        return rv;
+    }
+
     @GetMapping(value = "/qrcode", produces = MediaType.IMAGE_PNG_VALUE)
-    public ResponseEntity<byte[]> getQRCode(@RequestParam(value = "text", required = false) String text) {
+    public ResponseEntity<byte[]> getQRCode(@RequestParam(value = "text", required = false) String text,
+                                            @RequestParam(value = "menu", required = false, defaultValue = "0") int menu,
+                                            @RequestParam(value = "size", required = false, defaultValue = "256") int size) {
         try {
+            System.out.println("menu :: " + menu);
+            System.out.println("text :: " + text);
+            System.out.println("size :: " + size);
+            if (null == text || "".equals(text)) {
+                switch (menu) {
+                    case 1:
+                        text = "http://" + DOMAIN + "/voting1?menu=1";
+                        break;
+                    case 2:
+                        text = "http://" + DOMAIN + "/voting1?menu=2";
+                        break;
+                    case 3:
+                        text = "http://" + DOMAIN + "/voting1?menu=3";
+                        break;
+                    case 4:
+                        text = "http://" + DOMAIN + "/voting1?menu=4";
+                        break;
+                    default:
+                        text = text = "http://" + DOMAIN + "/voting1";
+                        break;
+                }
+            }
+
             return ResponseEntity.ok()
-                    .body(QRCodeUtil.generateQRCode("http://localhost:8080/voting1", 256, 256));
+                    .body(QRCodeUtil.generateQRCode(text, size, size));
         } catch (Exception ex) {
             throw new InternalServerError("Error while generating QR code image.", ex);
         }

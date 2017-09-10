@@ -58,7 +58,6 @@
             border-radius: 10px;
             padding: 10px;
             position: relative;
-            display: none;
         }
         
         .spec-bg {
@@ -112,6 +111,24 @@
         .my-star .glyphicon-star::before {
             color: #1E88E5;
         }
+        
+        .modal-center {
+            text-align: center;
+            padding: 0!important;
+        }
+        
+        .modal-center:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -4px;
+        }
+        
+        .modal-center-dialog {
+            display: inline-block;
+            vertical-align: middle;
+        }
 
     </style>
 
@@ -122,7 +139,7 @@
 
         <button class="btn btn-default action-btn"> 開 始 投 票 </button>
         <button class="btn btn-default spec-btn"> 投 票 說 明 </button>
-        <img id="qrcode" src="/qrcode" style="position:fixed; right:150px; max-width: 100px;display:none; top:10px;">
+        <img id="qrcode" src="/qrcode?menu=1" style="position:fixed; right:150px; max-width: 100px;display:none; top:10px;">
 
         <div id="BOX" style="position:fixed">
             <ul>
@@ -138,7 +155,7 @@
                 <ul>
                     <li class="p1 item index1">
                         <a href="#" data="1">A+ </a>
-                        <div class="score id-1"> 50 </div>
+                        <div class="score id-1"> 0 </div>
                         <div class="detail index1">
                             <div><span class="title"> 經費時程 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr" theme="test"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -150,7 +167,7 @@
                     </li>
                     <li class="p2 item index2">
                         <a href="#" data="2">dreamweaver</a>
-                        <div class="score id-2"> 50 </div>
+                        <div class="score id-2"> 0 </div>
                         <div class="detail index2">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -162,7 +179,7 @@
                     </li>
                     <li class="p3 item index1">
                         <a href="#" data="3">flash </a>
-                        <div class="score id-3"> 50 </div>
+                        <div class="score id-3"> 0 </div>
                         <div class="detail index1">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -174,7 +191,7 @@
                     </li>
                     <li class="p4 item index2">
                         <a href="#" data="4">flash game </a>
-                        <div class="score id-4"> 50 </div>
+                        <div class="score id-4"> 0 </div>
                         <div class="detail index2">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -192,7 +209,7 @@
                 <ul>
                     <li class="p5 item index1">
                         <a href="#" data="5">css </a>
-                        <div class="score id-5"> 50 </div>
+                        <div class="score id-5"> 0 </div>
                         <div class="detail index1">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -203,7 +220,7 @@
                         </div>
                     </li>
                     <li class="p6 item index2"><a href="#" data="6">dreamweaver</a>
-                        <div class="score id-6"> 50 </div>
+                        <div class="score id-6"> 0 </div>
                         <div class="detail index2">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -214,7 +231,7 @@
                         </div>
                     </li>
                     <li class="p7 item index1"><a href="#" data="7">flash </a>
-                        <div class="score id-7"> 50 </div>
+                        <div class="score id-7"> 0 </div>
                         <div class="detail index1">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -226,7 +243,7 @@
                     </li>
                     <li class="p8 item index2">
                         <a href="#" data="8">flash game </a>
-                        <div class="score id-8"> 50 </div>
+                        <div class="score id-8"> 0 </div>
                         <div class="detail index2">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -244,7 +261,7 @@
                 <ul>
                     <li class="p9 item index1">
                         <a href="#" data="9">css </a>
-                        <div class="score id-9"> 50 </div>
+                        <div class="score id-9"> 0 </div>
                         <div class="detail index1">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -256,7 +273,7 @@
                     </li>
                     <li class="p10 item index2">
                         <a href="#" data="10">dreamweaver</a>
-                        <div class="score id-10"> 50 </div>
+                        <div class="score id-10"> 0 </div>
                         <div class="detail index2">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -267,7 +284,7 @@
                         </div>
                     </li>
                     <li class="p11 item index1"><a href="#" data="11">flash </a>
-                        <div class="score id-11"> 50 </div>
+                        <div class="score id-11"> 0 </div>
                         <div class="detail index1">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -278,7 +295,7 @@
                         </div>
                     </li>
                     <li class="p12 item index2"><a href="#" data="12">flash game </a>
-                        <div class="score id-12"> 50 </div>
+                        <div class="score id-12"> 0 </div>
                         <div class="detail index2">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -296,7 +313,7 @@
                 <ul>
                     <li class="p13 item index1">
                         <a href="#" data="13">css </a>
-                        <div class="score id-13"> 50 </div>
+                        <div class="score id-13"> 0 </div>
                         <div class="detail index1">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -308,7 +325,7 @@
                     </li>
                     <li class="p14 item index2">
                         <a href="#" data="14">dreamweaver</a>
-                        <div class="score id-14"> 50 </div>
+                        <div class="score id-14"> 0 </div>
                         <div class="detail index2">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -320,7 +337,7 @@
                     </li>
                     <li class="p15 item index1">
                         <a href="#" data="15">flash </a>
-                        <div class="score id-15"> 50 </div>
+                        <div class="score id-15"> 0 </div>
                         <div class="detail index1">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -332,7 +349,7 @@
                     </li>
                     <li class="p16 item index2">
                         <a href="#" data="16">flash game </a>
-                        <div class="score id-16"> 50 </div>
+                        <div class="score id-16"> 0 </div>
                         <div class="detail index2">
                             <div><span class="title"> 經費時程</span> <input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"> </div>
                             <div><span class="title"> 現行環境 </span><input class="kv-ltr-theme-fa-star rating-loading my-star" value="3" dir="ltr"></div>
@@ -348,7 +365,7 @@
         </div>
 
         <div class="row text-center spec">
-            <div class="spec-frame spec1">
+            <div class="spec-frame spec1" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p1.png">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -361,7 +378,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec2">
+            <div class="spec-frame spec2" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p2.png">
                 <div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -373,7 +390,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec3">
+            <div class="spec-frame spec3" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p3.png">
                 <div id="myCarouse3" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -385,7 +402,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec4">
+            <div class="spec-frame spec4" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p4.png">
                 <div id="myCarouse4" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -398,7 +415,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec5">
+            <div class="spec-frame spec5" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p5.png">
                 <div id="myCarouse5" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -410,7 +427,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec6">
+            <div class="spec-frame spec6" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p6.png">
                 <div id="myCarouse6" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -422,7 +439,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec7">
+            <div class="spec-frame spec7" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p7.png">
                 <div id="myCarouse7" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -434,7 +451,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec8">
+            <div class="spec-frame spec8" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p8.png">
                 <div id="myCarouse8" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -446,7 +463,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec9">
+            <div class="spec-frame spec9" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p9.png">
                 <div id="myCarouse9" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -458,7 +475,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec10">
+            <div class="spec-frame spec10" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p10.png">
                 <div id="myCarouse10" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -470,7 +487,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec11">
+            <div class="spec-frame spec11" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p11.png">
                 <div id="myCarouse11" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -482,7 +499,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec12">
+            <div class="spec-frame spec12" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p12.png">
                 <div id="myCarouse12" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -494,7 +511,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec13">
+            <div class="spec-frame spec13" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p13.png">
                 <div id="myCarouse13" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -506,7 +523,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec14">
+            <div class="spec-frame spec14" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p14.png">
                 <div id="myCarouse14" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -518,7 +535,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec15">
+            <div class="spec-frame spec15" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p15.png">
                 <div id="myCarouse15" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -531,7 +548,7 @@
                 </div>
             </div>
 
-            <div class="spec-frame spec16">
+            <div class="spec-frame spec16" style="display:none;">
                 <img class="spec-bg" src="./resources/images/spec/p16.png">
                 <div id="myCarouse16" class="carousel slide" data-ride="carousel" data-interval="6000">
                     <div class="carousel-inner">
@@ -557,7 +574,23 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade modal-center" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog text-center modal-center-dialog" role="document" style="width:80%;">
+            <img src="../resources/images/Spinner.svg">
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade modal-center" id="QrCodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog text-center modal-center-dialog" role="document">
+            <img>
+        </div>
+    </div>
+
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="./resources/js/jquery.animateNumber.min.js"></script>
     <script type="text/javascript" src="./resources/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./resources/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="./resources/js/star-rating.js"></script>
@@ -569,6 +602,8 @@
         var selected_menu = "1";
 
         $(function() {
+
+            //$('#loadingModal').modal({backdrop: 'static', keyboard: false});
 
             var MENU = $("#BOX li a");
             MENU.on('click', function() {
@@ -586,10 +621,13 @@
                 var index = $(this).attr('data');
                 selected_menu = index;
                 console.log('#menu' + index);
+
                 $('.spec-frame').hide();
                 $('.menu').hide();
-                $('#menu' + index).show();
+
+                $('#menu' + index).toggle('clip', {}, 500);
                 $('.spec').show();
+                $('#qrcode').attr('src', '/qrcode?menu=' + selected_menu);
                 menu_recovery();
             });
 
@@ -600,7 +638,8 @@
                 var index = $(this).attr('data');
                 console.log('#spec' + index);
                 $('.spec-frame').hide();
-                $('.spec' + index).css('display', 'inline-block');
+                $('.spec' + index).slideDown();
+
             });
 
             var menu_recovery = function() {
@@ -620,6 +659,7 @@
                 $('#qrcode').hide();
 
                 $('.action-btn').text('開 始 投 票');
+
             }
 
             var menu_display = function(t1, t2, t3) {
@@ -648,6 +688,7 @@
                             $('.menu li').css('color', '#fff');
                             $('.menu ul').css('overflow', 'initial');
                             $('.detail').css('visibility', 'visible');
+                            $('.action-btn').attr('disabled', false);
                         });
                     });
 
@@ -675,10 +716,114 @@
 
                 $('.menu li').unbind('mouseenter').unbind('mouseleave');
                 $('.action-btn').text('開 始 計 分');
+
+            }
+
+            var show_score = function(data, s1, s2, s3, s4) {
+                $('#loadingModal').modal('hide');
+                $('.score').show();
+
+                setTimeout(function() {
+                    $(s1).animateNumber({
+                        number: data[0].content,
+                        numberStep: function(now, tween) {
+                            var target = $(tween.elem);
+                            target.prop('number', now).text(now);
+                        }
+                    }, 'slow', function() {
+
+                    });
+                }, 1000);
+                setTimeout(function() {
+                    $(s2).animateNumber({
+                        number: data[1].content,
+                        numberStep: function(now, tween) {
+                            var target = $(tween.elem);
+                            target.prop('number', now).text(now);
+                        }
+                    }, 'slow', function() {
+
+                    });
+                }, 2000);
+                setTimeout(function() {
+                    $(s3).animateNumber({
+                        number: data[2].content,
+                        numberStep: function(now, tween) {
+                            var target = $(tween.elem);
+                            target.prop('number', now).text(now);
+                        }
+                    }, 'slow', function() {
+
+                    });
+                }, 3000);
+                setTimeout(function() {
+                    $(s4).animateNumber({
+                        number: data[3].content,
+                        numberStep: function(now, tween) {
+                            var target = $(tween.elem);
+                            target.prop('number', now).text(now);
+                        }
+                    }, 'slow', function() {
+
+                    });
+                }, 4000);
             }
 
             var get_the_score = function() {
                 console.log('get the scroe');
+                var prefix = '.id-';
+                var score1 = prefix + (selected_menu * 4 - 3);
+                var score2 = prefix + (selected_menu * 4 - 2);
+                var score3 = prefix + (selected_menu * 4 - 1);
+                var score4 = prefix + (selected_menu * 4);
+                console.log(score1);
+                console.log(score2);
+                console.log(score3);
+                console.log(score4);
+                $.ajax({
+                    url: '/test_get_score',
+                    contentType: 'application/json; charset=UTF-8',
+                    data: {
+                        menu: selected_menu
+                    },
+                    dataType: 'json',
+                    beforeSend: function(jqXHR, settings) {
+                        console.log('before get score');
+
+                        $(score1).animateNumber({
+                            number: 0
+                        });
+                        $(score2).animateNumber({
+                            number: 0
+                        });
+                        $(score3).animateNumber({
+                            number: 0
+                        });
+                        $(score4).animateNumber({
+                            number: 0
+                        });
+
+                        $('#loadingModal').modal({
+                            backdrop: 'static',
+                            keyboard: false
+                        });
+                    },
+                    success: function(data, textStatus, jqXHR) {
+                        console.log('get score success');
+                        console.log(data);
+                        setTimeout(function(){
+                            show_score(data, score1, score2, score3, score4)
+                        }, 1000);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log('get score error');
+                        $('#loadingModal').modal('hide');
+                    },
+                    complete: function(JqXHR, textStatus) {
+                        console.log('get score complete');
+                        //$('#loadingModal').modal('hide');
+                    }
+                });
             }
 
             $('.action-btn').on('click', function() {
@@ -686,6 +831,7 @@
                 console.log(label);
                 console.log(label.indexOf('票'));
                 if (label.indexOf('票') !== -1) {
+                    $(this).attr('disabled', true);
                     start_voting();
                 } else {
                     get_the_score();
@@ -733,7 +879,7 @@
                 hoverEnabled: false,
                 readonly: true
             });
-            
+
             $('.kv-ltr-theme-fa-star.my-star').rating({
                 size: 'xs',
                 hoverOnClear: false,
@@ -742,13 +888,19 @@
                 showClear: false,
                 hoverEnabled: false,
                 readonly: true,
-                containerClass:'my-star'
+                containerClass: 'my-star'
             });
 
             var test_voting = function() {
                 $('#menu' + selected_menu + ' #rating-1').rating('update', 1.5);
                 $('#menu' + selected_menu + ' #rating-2').rating('update', 3.5);
             }
+
+            $('#qrcode').on('click', function() {
+                var qrcode_size = 512;
+                $('#QrCodeModal img').attr('src', '/qrcode?menu=' + selected_menu + '&size=' + qrcode_size);
+                $('#QrCodeModal').modal();
+            });
         });
 
     </script>
