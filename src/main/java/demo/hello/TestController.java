@@ -23,7 +23,7 @@ public class TestController {
     @Autowired
     private ProjectDAO projectDAO;
 
-    private static String DOMAIN = "localhost:8080";
+    private static String DOMAIN = "voting-tomcat8.a3c1.starter-us-west-1.openshiftapps.com ";//"localhost:8080";
 
     @RequestMapping("/test_send")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
