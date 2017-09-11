@@ -58,6 +58,28 @@ public class TestController {
         return new SubmitResult(res);
     }
 
+    @RequestMapping(value = "/voting_test2", method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    public SubmitResult voting2(@RequestBody List<Map> listItem) {
+
+        for(Map payload:listItem){
+            System.out.println(payload);
+
+            Result item = new Result();
+            item.setProjectID((Integer) payload.get("project_id"));
+            item.setKeyBusiness((Integer) payload.get("key_business"));
+            item.setPriority((Integer) payload.get("priority"));
+            item.setModified(new Timestamp(new Date().getTime()));
+
+            int res = resultDAO.create(item);
+        }
+
+
+        return new SubmitResult(1);
+    }
+
     @RequestMapping("/test_get_score")
     public List<Score> testGetScore(@RequestParam(value = "menu", defaultValue = "World") String menu) {
         System.out.println("menu :: " + menu);
