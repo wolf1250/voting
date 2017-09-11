@@ -64,19 +64,27 @@ public class TestController {
     @ResponseBody
     public SubmitResult voting2(@RequestBody List<Map> listItem) {
 
-        for(Map payload:listItem){
+        for (int i = 0; i < listItem.size(); i++) {
+            Map payload = listItem.get(i);
             System.out.println(payload);
 
             Result item = new Result();
-            item.setProjectID((Integer) payload.get("project_id"));
-            item.setKeyBusiness((Integer) payload.get("key_business"));
-            item.setPriority((Integer) payload.get("priority"));
+
+            int project_id = (Integer) payload.get("project_id");
+            int key_business = (Integer) payload.get("key_business");
+            int priority = (Integer) payload.get("priority");
+
+            item.setProjectID(project_id);
+            item.setKeyBusiness(key_business);
+            item.setPriority(priority);
             item.setModified(new Timestamp(new Date().getTime()));
-
             int res = resultDAO.create(item);
+
+            Map map = resultDAO.average(project_id);
+
+            this.template.convertAndSend("/topic/rating" + String.valueOf(i * 2 + 1), map.get("avg_k"));
+            this.template.convertAndSend("/topic/rating" + String.valueOf(i * 2 + 2), map.get("avg_p"));
         }
-
-
         return new SubmitResult(1);
     }
 

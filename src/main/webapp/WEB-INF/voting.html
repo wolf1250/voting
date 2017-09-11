@@ -158,10 +158,18 @@
 
             $('.submit-btn').on('click', function() {
                 console.log($.cookie("v-token"));
-                var submit_data ={project_id:2, key_business:2, priority:3};
+                var statehasstores = false;
                 $('.kv-ltr-theme-fa-star').each(function(){
-                    console.log($(this).val());
+                    if(!$(this).val()){
+                        alert('請至少選擇一個');
+                        statehasstores = true;
+                        return false;//break loop
+                    }
                 });
+                if(statehasstores){
+                    return false;//return to UI
+                }
+
 
                 var list = [];
 
