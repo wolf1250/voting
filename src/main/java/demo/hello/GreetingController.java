@@ -36,20 +36,20 @@ public class GreetingController {
     }
 
 
-    @RequestMapping("/voting1")
+    @RequestMapping("/voting")
     public String toVotingPage(HttpServletRequest request, HttpServletResponse response, Model model) {
-        Cookie votingToken = WebUtils.getCookie(request, "v-token");
+        Cookie votingToken = WebUtils.getCookie(request, "v1-token");
         if (null == votingToken) {
-            System.out.println("v-token ::　" + votingToken);
+            System.out.println("v1-token ::　" + votingToken);
         }else{
-            System.out.println("v-token ::　" + votingToken.getValue());
+            System.out.println("v1-token ::　" + votingToken.getValue());
         }
         System.out.println("toVotingPage");
 
         if (null == votingToken) {
-            response.addCookie(new Cookie("v-token", UUID.randomUUID().toString()));
+            response.addCookie(new Cookie("v1-token", UUID.randomUUID().toString()));
         }
-        return "voting";
+        return "voting_1";
     }
 
     @RequestMapping("/greeting")

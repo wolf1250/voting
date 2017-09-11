@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>行動應用投票</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="./resources/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./resources/css/star-rating.css" media="all" />
+    <style>
+        .submit-btn {
+            background-color: #4bacc6;
+            color: #FFF;
+            border: 2px solid #FFF;
+            box-shadow: 3px 3px 5px #a0a0a0;
+            position: fixed;
+            padding: 6px 20px;
+            right: 20px;
+            top: 10px;
+        }
+        
+        .submit-btn:focus {
+            background-color: #4bacc6;
+            color: #FFF;
+            border: 2px solid #FFF;
+            box-shadow: 3px 3px 5px #a0a0a0;
+        }
+        
+        .media {
+            border-bottom: 1px solid #000;
+            padding-left: 10px;
+            padding-bottom: 10px;
+        }
+        
+        .media img {
+            max-height: 100px;
+        }
+        
+        .modal-center {
+            text-align: center;
+            padding: 0!important;
+        }
+        
+        .modal-center:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -4px;
+        }
+        
+        .modal-center-dialog {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container" style="margin-top: 20px;">
+
+        <button class="btn btn-default submit-btn">送 出</button>
+
+        <div class="row">
+            <div class="media" style="padding-top:20px;">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="./resources/images/tab/tab_p13.png" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <span class="title">關鍵業務</span>
+                    <input id="rating-1" class="kv-ltr-theme-fa-star rating-loading" value="0" dir="ltr">
+                    <span class="title">優先性</span>
+                    <input id="rating-2" class="kv-ltr-theme-fa-star rating-loading" value="0" dir="ltr">
+                </div>
+            </div>
+            <br/>
+        </div>
+
+        <div class="row">
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="./resources/images/tab/tab_p14.png" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <span class="title">關鍵業務</span>
+                    <input id="rating-3" class="kv-ltr-theme-fa-star rating-loading" value="3" dir="ltr">
+                    <span class="title">優先性</span>
+                    <input id="rating-4" class="kv-ltr-theme-fa-star rating-loading" value="3" dir="ltr">
+                </div>
+            </div>
+            <br/>
+        </div>
+
+        <div class="row">
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="./resources/images/tab/tab_p15.png" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <span class="title">關鍵業務</span>
+                    <input id="rating-5" class="kv-ltr-theme-fa-star rating-loading" value="0" dir="ltr">
+                    <span class="title">優先性</span>
+                    <input id="ratring-6" class="kv-ltr-theme-fa-star rating-loading" value="0" dir="ltr">
+                </div>
+            </div>
+            <br/>
+        </div>
+
+        <div class="row">
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="./resources/images/tab/tab_p16.png" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <span class="title">關鍵業務</span>
+                    <input id="rating-7" class="kv-ltr-theme-fa-star rating-loading" value="0" dir="ltr">
+                    <span class="title">優先性</span>
+                    <input id="rating-8" class="kv-ltr-theme-fa-star rating-loading" value="0" dir="ltr">
+                </div>
+            </div>
+            <br/>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade modal-center" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog text-center modal-center-dialog" role="document" style="width:80%;">
+            <img src="../resources/images/Eclipse.svg">
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <h1>感謝您的投票</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="./resources/js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="./resources/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="./resources/js/star-rating.js" type="text/javascript"></script>
+    <script src="./resources/js/sockjs.min.js" type="text/javascript"></script>
+    <script src="./resources/js/stomp.min.js" type="text/javascript"></script>
+    <script src="./resources/js/my_socket.js" type="text/javascript"></script>
+    <script>
+        $(function() {
+            $('.kv-ltr-theme-fa-star').rating({
+                size: 'xs',
+                hoverOnClear: false,
+                theme: 'krajee-fa',
+                showCaption: false,
+                showClear: false,
+                step: 1.0
+            });
+
+            var check_ratring = function() {
+
+            }
+
+            var submit_data = function(submit_data) {
+                $.ajax({
+                    url: './voting_test',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(submit_data),
+                    dataType: 'json',
+                    beforeSend: function(jqXHR, settings) {
+                        console.log('before get score');
+
+                        $('#loadingModal').modal({
+                            backdrop: 'static',
+                            keyboard: false
+                        });
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        $('#loadingModal').modal('hide');
+                    },
+                    success: function(data, textStatus, jqXHR) {
+                        $('#loadingModal').modal('hide');
+                        $('#myModal').modal('show');
+                    }
+                });
+            }
+
+
+            $('.submit-btn').on('click', function() {
+                var token = $.cookie(('v4-token'));
+                var r1 = $('#rating-1').val();
+                var r2 = $('#rating-2').val();
+                var r3 = $('#rating-3').val();
+                var r4 = $('#rating-4').val();
+                var r5 = $('#rating-5').val();
+                var r6 = $('#rating-6').val();
+                var r7 = $('#rating-7').val();
+                var r8 = $('#rating-8').val();
+
+                console.log(token);
+
+                var submit_data = {
+                    token: token,
+                    menu: 4,
+                    r1: r1,
+                    r2: r2,
+                    r3: r3,
+                    r4: r4,
+                    r5: r5,
+                    r6: r6,
+                    r7: r7,
+                    r8: r8
+                };
+
+
+            });
+        });
+
+    </script>
+</body>
+
+</html>
