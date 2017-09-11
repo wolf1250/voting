@@ -50,6 +50,7 @@ public class TestController {
 
         Result item = new Result();
         item.setProjectID((Integer) payload.get("project_id"));
+        item.setToken((String) payload.get("token"));
         item.setKeyBusiness((Integer) payload.get("key_business"));
         item.setPriority((Integer) payload.get("priority"));
         item.setModified(new Timestamp(new Date().getTime()));
@@ -73,8 +74,10 @@ public class TestController {
             int project_id = (Integer) payload.get("project_id");
             int key_business = (Integer) payload.get("key_business");
             int priority = (Integer) payload.get("priority");
+            String token = (String) payload.get("token");
 
             item.setProjectID(project_id);
+            item.setToken(token);
             item.setKeyBusiness(key_business);
             item.setPriority(priority);
             item.setModified(new Timestamp(new Date().getTime()));

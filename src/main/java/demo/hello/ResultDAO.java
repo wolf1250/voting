@@ -15,7 +15,7 @@ public class ResultDAO {
 
     public int create(Result result){
         Object[] parm = result.getObjectArray();
-        String sql = "insert into result (project_id, key_business, priority, modified) values (?,?,?,?)";
+        String sql = "insert into result (project_id, token, key_business, priority, modified) values (?,?,?,?,?)";
         return db.update(sql, parm);
     }
 

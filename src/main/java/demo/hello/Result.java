@@ -6,6 +6,7 @@ public class Result {
 
     private int id;
     private int projectID;
+    private String token;
     private int keyBusiness;
     private int priority;
     private Timestamp modified;
@@ -24,6 +25,14 @@ public class Result {
 
     public void setProjectID(int projectID) {
         this.projectID = projectID;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public int getKeyBusiness() {
@@ -51,7 +60,7 @@ public class Result {
     }
 
     public Object[] getObjectArray(){
-        Object[] rv =  {this.projectID, this.keyBusiness, this.priority, this.modified};
+        Object[] rv =  {this.projectID, this.token, this.keyBusiness, this.priority, this.modified};
         return rv;
     }
 
@@ -60,6 +69,7 @@ public class Result {
         return "Result{" +
                 "id=" + id +
                 ", projectID=" + projectID +
+                ", token=" + token +
                 ", keyBusiness=" + keyBusiness +
                 ", priority=" + priority +
                 ", modified=" + modified +
