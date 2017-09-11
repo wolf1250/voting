@@ -165,23 +165,24 @@
 
                 var list = [];
 
-                var submit_data = {};
+                var submit_data1 = {};
                 submit_data1.project_id = 1;
                 submit_data1.key_business = parseInt($('.kv-ltr-theme-fa-star:eq(0)').val());
                 submit_data1.priority = parseInt($('.kv-ltr-theme-fa-star:eq(1)').val());
                 list.push(submit_data1);
 
                 var submit_data2 = {};
-                submit_data.project_id = 2;
+                submit_data2.project_id = 2;
                 submit_data2.key_business = parseInt($('.kv-ltr-theme-fa-star:eq(2)').val());
                 submit_data2.priority = parseInt($('.kv-ltr-theme-fa-star:eq(3)').val());
-                submit_data.key_business = 2;
+                list.push(submit_data2);
 
                 var submit_data3 = {};
-                submit_data.priority = 3;
+                submit_data3.project_id = 3;
                 submit_data3.key_business = parseInt($('.kv-ltr-theme-fa-star:eq(4)').val());
                 submit_data3.priority = parseInt($('.kv-ltr-theme-fa-star:eq(5)').val());
                 list.push(submit_data3);
+
                 var submit_data4 = {};
                 submit_data4.project_id = 4;
                 submit_data4.key_business = parseInt($('.kv-ltr-theme-fa-star:eq(6)').val());
@@ -193,7 +194,7 @@
                     url: './voting_test2',
                     method: 'POST',
                     contentType: 'application/json',
-                    data: JSON.stringify(submit_data),
+                    data: JSON.stringify(list),
                     dataType: 'json',
                     error: function(jqXHR, textStatus, errorThrown) {
 
