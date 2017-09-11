@@ -8,6 +8,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class ScoreScheduler {
     @Autowired
@@ -16,13 +19,13 @@ public class ScoreScheduler {
     @Autowired
     QueueConfig queueConfig;
 
-    @Scheduled(fixedRate = 1 * 500)
+    @Scheduled(fixedRate = 30* 1000)
     public void greeting() {
         if(!queueConfig.blockingQueue().isEmpty()){
             System.out.println("blocking queue is not empty");
-            Item payload = queueConfig.blockingQueue().poll();
-            System.out.println(payload);
-            this.template.convertAndSend("/topic/counting", payload);
+            List<Item> items = new ArrayList<>();
+            int drainCount = queueConfig.blockingQueue().drainTo(items,2);
+            items.stream().forEach(payload -> template.convertAndSend("/topic/counting", payload));
         }
         System.out.println("blocking queue is empty");
     }

@@ -30,8 +30,6 @@ public class ScoreController {
     @RequestMapping("/submit_test")
     public @ResponseBody String count() throws InterruptedException {
         System.out.println("submit_test");
-        Thread.sleep(1000); // simulated delay
-
         queueConfig.blockingQueue().add(ItemMock.mockItem());
         return "good";
     }

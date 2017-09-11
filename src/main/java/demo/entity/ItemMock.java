@@ -12,13 +12,21 @@ public class ItemMock {
         try {
             SecureRandom secureRandom3 = SecureRandom.getInstance("SHA1PRNG");
 
+//            item = new Item("行動A+"
+//                    , secureRandom3.nextInt(5)+1
+//                    , secureRandom3.nextInt(5)+1
+//                    , secureRandom3.nextInt(5)+1
+//                    , secureRandom3.nextInt(5)+1
+//                    , secureRandom3.nextInt(5)+1
+//                    , secureRandom3.nextInt(5)+1);
+
             item = new Item("行動A+"
+                    , 4
+                    , 4
                     , secureRandom3.nextInt(5)+1
                     , secureRandom3.nextInt(5)+1
-                    , secureRandom3.nextInt(5)+1
-                    , secureRandom3.nextInt(5)+1
-                    , secureRandom3.nextInt(5)+1
-                    , secureRandom3.nextInt(5)+1);
+                    , 5
+                    , 3);
 
             return item;
         } catch (NoSuchAlgorithmException e) {
