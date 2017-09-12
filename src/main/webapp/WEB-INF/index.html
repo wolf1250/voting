@@ -581,7 +581,7 @@
                     <img src="../resources/images/s1.png" style="max-width: 665px;border: 1px solid #000;border-radius: 5px;padding: 5px;box-shadow: 3px 3px 5px #a0a0a0;">
                     -->
 
-                    <div id="scoreCarousel" class="carousel slide" data-ride="carousel" data-interval="99999999">
+                    <div id="scoreCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
@@ -904,10 +904,10 @@
                         marginTop: 0
                     }, 800, "easeOutBounce");
                     $(this).next().stop(true, false).animate({
-                        marginTop: 40
+                        marginTop: 32
                     }, 900, "easeOutBack");
                     $(this).prev().stop(true, false).animate({
-                        marginTop: 40
+                        marginTop: 32
                     }, 900, "easeOutBack");
                 }, function() {
                     $(this).stop(true, false).animate({
