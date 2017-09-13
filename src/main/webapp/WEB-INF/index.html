@@ -641,7 +641,7 @@
             <div class="url" style="background-color: #fff;margin: 0 auto;font-size: 30px;width: 512px;"></div>
         </div>
     </div>
-    
+
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="./resources/js/jquery.animateNumber.min.js"></script>
@@ -653,7 +653,7 @@
     <script type="text/javascript" src="./resources/js/stomp.min.js"></script>
     <script type="text/javascript" src="./resources/js/my_socket.js"></script>
     <script>
-        var selected_menu = "1";
+        var selected_menu = '1';
 
         $(function() {
 
@@ -955,7 +955,16 @@
             $('#qrcode').on('click', function() {
                 var qrcode_size = 512;
                 $('#QrCodeModal img').attr('src', '/qrcode?menu=' + selected_menu + '&size=' + qrcode_size);
-                $('.url').html('http://goo.gl/yGCbjk?menu=' + selected_menu);
+                if (selected_menu === '1') {
+                    $('.url').html('http://goo.gl/jkqCis');
+                } else if (selected_menu === '2') {
+                    $('.url').html('http://goo.gl/657W62');
+                } else if (selected_menu === '3') {
+                    $('.url').html('http://goo.gl/Wfmf6h');
+                } else {
+                    $('.url').html('http://goo.gl/73HDCp');
+                }
+
                 $('#QrCodeModal').modal();
             });
         });
