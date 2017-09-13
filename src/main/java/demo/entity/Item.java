@@ -21,11 +21,11 @@ public class Item {
         this.s5 = s5;
         this.s6 = s6;
         this.total = (s1 * 1.5
-                + s2 * 1.5
-                + s3 * 1.5
-                + s4 * 1.5
-                + s5 * 1.5
-                + s6 * 2.5) * 100 * (0.2) * (0.1);
+                + s2 * 1
+                + s3 * 2.2
+                + s4 * 2
+                + s5 * 1.3
+                + s6 * 2) * 100 * (0.2) * (0.1);
     }
 
     public String getName() {
