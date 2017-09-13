@@ -1,6 +1,7 @@
 package demo.hello;
 
 import demo.entity.*;
+import demo.utils.IPUtils;
 import demo.utils.QRCodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.util.*;
@@ -72,7 +74,12 @@ public class TestController {
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    public SubmitResult voting2(@RequestBody Map<String, Object> payload) {
+    public SubmitResult voting2(@RequestHeader(value = "User-Agent") String userAgent,
+                                @RequestBody Map<String, Object> payload,
+                                HttpServletRequest request) {
+        System.out.println("userAgent :: " + userAgent);
+        String ip = IPUtils.getClientIpAddress ( request );
+        System.out.println("ip :: " + ip);
         int row = 0;
         DecimalFormat df = new DecimalFormat("#.#");
 
