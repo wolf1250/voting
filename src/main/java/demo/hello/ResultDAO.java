@@ -35,4 +35,10 @@ public class ResultDAO {
         return map;
     }
 
+    public int removeByToken(String token){
+        Object[] parm = {token};
+        String sql = "delete from result where token = ?";
+        return db.update(sql, token);
+    }
+
 }

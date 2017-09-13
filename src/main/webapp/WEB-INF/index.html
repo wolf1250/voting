@@ -638,9 +638,10 @@
     <div class="modal fade modal-center" id="QrCodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog text-center modal-center-dialog" role="document">
             <img>
+            <div class="url" style="background-color: #fff;margin: 0 auto;font-size: 30px;width: 512px;"></div>
         </div>
     </div>
-
+    
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="./resources/js/jquery.animateNumber.min.js"></script>
@@ -954,6 +955,7 @@
             $('#qrcode').on('click', function() {
                 var qrcode_size = 512;
                 $('#QrCodeModal img').attr('src', '/qrcode?menu=' + selected_menu + '&size=' + qrcode_size);
+                $('.url').html('http://goo.gl/yGCbjk?menu=' + selected_menu);
                 $('#QrCodeModal').modal();
             });
         });

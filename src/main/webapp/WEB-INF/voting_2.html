@@ -56,6 +56,10 @@
             display: inline-block;
             vertical-align: middle;
         }
+        
+        .rating-xs {
+            font-size: 1.5em;
+        }
 
     </style>
 
@@ -92,9 +96,9 @@
                 </div>
                 <div class="media-body">
                     <span class="title">關鍵業務</span>
-                    <input id="rating-3" class="kv-ltr-theme-fa-star rating-loading" value="3" dir="ltr">
+                    <input id="rating-3" class="kv-ltr-theme-fa-star rating-loading" value="0" dir="ltr">
                     <span class="title">優先性</span>
-                    <input id="rating-4" class="kv-ltr-theme-fa-star rating-loading" value="3" dir="ltr">
+                    <input id="rating-4" class="kv-ltr-theme-fa-star rating-loading" value="0" dir="ltr">
                 </div>
             </div>
             <br/>
@@ -111,7 +115,7 @@
                     <span class="title">關鍵業務</span>
                     <input id="rating-5" class="kv-ltr-theme-fa-star rating-loading" value="0" dir="ltr">
                     <span class="title">優先性</span>
-                    <input id="ratring-6" class="kv-ltr-theme-fa-star rating-loading" value="0" dir="ltr">
+                    <input id="rating-6" class="kv-ltr-theme-fa-star rating-loading" value="0" dir="ltr">
                 </div>
             </div>
             <br/>
@@ -134,6 +138,8 @@
             <br/>
         </div>
     </div>
+    
+    <div class="cookie" style="color:#FFF"></div>
 
     <!-- Modal -->
     <div class="modal fade modal-center" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -142,20 +148,51 @@
         </div>
     </div>
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade modal-center" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-center-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
 
+                <div class="modal-body text-center">
+                    <h2>感謝您的參與</h2>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-center" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-center-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body text-center">
+                    <h2>投票尚未完成</h2>
                 </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-center" id="finishModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-center-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body text-center">
+                    <h2>感謝您的參與</h2>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-center" id="repeatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-center-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body text-center">
+                    <h2>您已完成投票</h2>
+                    <h2>感謝您的參與</h2>
+                </div>
+
             </div>
         </div>
     </div>
@@ -175,44 +212,63 @@
                 hoverOnClear: false,
                 theme: 'krajee-fa',
                 showCaption: false,
-                showClear: false,
-                step: 1.0
+                showClear: false
             });
 
-            var check_ratring = function() {
-
-            }
+            $('.cookie').text($.cookie(('v2-token')));
 
 
             $('.submit-btn').on('click', function() {
 
                 var token = $.cookie(('v2-token'));
-                var r1 = $('#rating-1').val();
-                var r2 = $('#rating-2').val();
-                var r3 = $('#rating-3').val();
-                var r4 = $('#rating-4').val();
-                var r5 = $('#rating-5').val();
-                var r6 = $('#rating-6').val();
-                var r7 = $('#rating-7').val();
-                var r8 = $('#rating-8').val();
+                
+               var r1 = (parseFloat('' === $('#rating-1').val()? 0.0 : $('#rating-1').val())).toFixed(1);
+                var r2 = (parseFloat('' === $('#rating-2').val()? 0.0 : $('#rating-2').val())).toFixed(1);
+                var r3 = (parseFloat('' === $('#rating-3').val()? 0.0 : $('#rating-3').val())).toFixed(1);
+                var r4 = (parseFloat('' === $('#rating-4').val()? 0.0 : $('#rating-4').val())).toFixed(1);
+                var r5 = (parseFloat('' === $('#rating-5').val()? 0.0 : $('#rating-5').val())).toFixed(1);
+                var r6 = (parseFloat('' === $('#rating-6').val()? 0.0 : $('#rating-6').val())).toFixed(1);
+                var r7 = (parseFloat('' === $('#rating-7').val()? 0.0 : $('#rating-7').val())).toFixed(1);
+                var r8 = (parseFloat('' === $('#rating-8').val()? 0.0 : $('#rating-8').val())).toFixed(1);
+                console.log(r1 + ' :: ' + $('#rating-1').val() + ', ' + 
+                            r2 + ' :: ' + $('#rating-2').val() + ', ' + 
+                            r3 + ' :: ' + $('#rating-3').val() + ', ' + 
+                            r4 + ' :: ' + $('#rating-4').val() + ', ' + 
+                            r5 + ' :: ' + $('#rating-5').val() + ', ' + 
+                            r6 + ' :: ' + $('#rating-6').val() + ', ' + 
+                            r7 + ' :: ' + $('#rating-7').val() + ', ' + 
+                            r8 + ' :: ' + $('#rating-8').val());
 
                 console.log(token);
 
-                var submit_data = {
-                    token: token,
-                    menu: 4,
-                    r1: r1,
-                    r2: r2,
-                    r3: r3,
-                    r4: r4,
-                    r5: r5,
-                    r6: r6,
-                    r7: r7,
-                    r8: r8
-                };
-                
+                var submit_data = [{
+                        project_id: 5,
+                        key_business: r1,
+                        priority: r2,
+                        token: token
+                    },
+                    {
+                        project_id: 6,
+                        key_business: r3,
+                        priority: r4,
+                        token: token
+                    },
+                    {
+                        project_id: 7,
+                        key_business: r5,
+                        priority: r6,
+                        token: token
+                    },
+                    {
+                        project_id: 8,
+                        key_business: r7,
+                        priority: r8,
+                        token: token
+                    }
+                ];
+
                 $.ajax({
-                    url: './voting_test',
+                    url: './voting_test2',
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(submit_data),
@@ -226,11 +282,24 @@
                         });
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
-                        $('#loadingModal').modal('hide');
+                        setTimeout(function() {
+                            $('#loadingModal').modal('hide');
+                            $('#errorModal').modal('show');
+                        }, 1000);
                     },
                     success: function(data, textStatus, jqXHR) {
-                        $('#loadingModal').modal('hide');
-                        $('#myModal').modal('show');
+
+                        setTimeout(function() {
+                            $('.submit-btn').attr('disabled', true);
+                            $('#loadingModal').modal('hide');
+                            if (data.result === 'false') {
+                                $('#repeatModal').modal('show');
+                            } else {
+                                $('#finishModal').modal('show');
+                            }
+                        }, 1000);
+
+
                     }
                 });
             });

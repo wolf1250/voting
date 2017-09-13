@@ -7,8 +7,8 @@ public class Result {
     private int id;
     private int projectID;
     private String token;
-    private int keyBusiness;
-    private int priority;
+    private double keyBusiness;
+    private double priority;
     private Timestamp modified;
 
     public int getId() {
@@ -35,19 +35,19 @@ public class Result {
         this.token = token;
     }
 
-    public int getKeyBusiness() {
+    public double getKeyBusiness() {
         return keyBusiness;
     }
 
-    public void setKeyBusiness(int keyBusiness) {
+    public void setKeyBusiness(double keyBusiness) {
         this.keyBusiness = keyBusiness;
     }
 
-    public int getPriority() {
+    public double getPriority() {
         return priority;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(double priority) {
         this.priority = priority;
     }
 

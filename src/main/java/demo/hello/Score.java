@@ -1,16 +1,19 @@
 package demo.hello;
 
+import java.text.DecimalFormat;
+
 public class Score {
-    private int  content;
+    private double  content;
 
     public Score(){}
 
-    public Score(int content){
+    public Score(double content){
         this.content = content;
     }
 
-    public double getContent() {
-        return content;
+    public String getContent() {
+        DecimalFormat df=new DecimalFormat("#.#");
+        return df.format(content);
     }
 
 

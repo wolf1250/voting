@@ -13,7 +13,7 @@ function connect() {
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-1';
             console.log(target);
-            $(target).rating('update', parseInt(data.body));
+            $(target).rating('update', parseFloat(data.body));
 
         });
 
@@ -22,7 +22,7 @@ function connect() {
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-2';
             console.log(target);
-            $(target).rating('update', parseInt(data.body));
+            $(target).rating('update', parseFloat(data.body));
 
         });
 
@@ -31,7 +31,7 @@ function connect() {
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-3';
             console.log(target);
-            $(target).rating('update', parseInt(data.body));
+            $(target).rating('update', parseFloat(data.body));
 
         });
 
@@ -40,7 +40,7 @@ function connect() {
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-4';
             console.log(target);
-            $(target).rating('update', parseInt(data.body));
+            $(target).rating('update', parseFloat(data.body));
 
         });
 
@@ -49,7 +49,7 @@ function connect() {
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-5';
             console.log(target);
-            $(target).rating('update', parseInt(data.body));
+            $(target).rating('update', parseFloat(data.body));
 
         });
 
@@ -58,7 +58,7 @@ function connect() {
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-6';
             console.log(target);
-            $(target).rating('update', parseInt(data.body));
+            $(target).rating('update', parseFloat(data.body));
 
         });
 
@@ -67,7 +67,7 @@ function connect() {
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-7';
             console.log(target);
-            $(target).rating('update', parseInt(data.body));
+            $(target).rating('update', parseFloat(data.body));
 
         });
 
@@ -76,7 +76,7 @@ function connect() {
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-8';
             console.log(target);
-            $(target).rating('update', parseInt(data.body));
+            $(target).rating('update', parseFloat(data.body));
 
         });
     });
