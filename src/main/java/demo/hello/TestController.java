@@ -106,6 +106,8 @@ public class TestController {
             result.setKeyBusiness(key_business);
             result.setPriority(priority);
             result.setModified(new Timestamp(new Date().getTime()));
+            result.setIp(ip);
+            result.setUserAgent(userAgent);
 
             try {
                 row += resultDAO.create(result);

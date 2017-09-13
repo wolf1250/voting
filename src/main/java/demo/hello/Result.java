@@ -10,6 +10,8 @@ public class Result {
     private double keyBusiness;
     private double priority;
     private Timestamp modified;
+    private String userAgent;
+    private String ip;
 
     public int getId() {
         return id;
@@ -59,8 +61,24 @@ public class Result {
         this.modified = modified;
     }
 
-    public Object[] getObjectArray(){
-        Object[] rv =  {this.projectID, this.token, this.keyBusiness, this.priority, this.modified};
+    public String getUserAgent() {
+        return userAgent;
+    }
+
+    public void setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public Object[] getObjectArray() {
+        Object[] rv = {this.projectID, this.token, this.keyBusiness, this.priority, this.modified, this.ip, this.userAgent};
         return rv;
     }
 
@@ -69,10 +87,12 @@ public class Result {
         return "Result{" +
                 "id=" + id +
                 ", projectID=" + projectID +
-                ", token=" + token +
+                ", token='" + token + '\'' +
                 ", keyBusiness=" + keyBusiness +
                 ", priority=" + priority +
                 ", modified=" + modified +
+                ", userAgent='" + userAgent + '\'' +
+                ", ip='" + ip + '\'' +
                 '}';
     }
 }
