@@ -682,7 +682,12 @@
                 $('#menu' + index).toggle('clip', {}, 500);
                 $('.spec').show();
                 $('#qrcode').attr('src', '/qrcode?menu=' + selected_menu);
+
+
+
                 menu_recovery();
+                disconnect();
+                connect();
             });
 
             $('.menu li a').on('click', function() {
@@ -750,6 +755,7 @@
 
             var start_voting = function() {
                 console.log('start voting');
+                get_rating();
                 $('.spec').hide();
 
                 $('#qrcode').show();
@@ -834,7 +840,7 @@
                 console.log(score3);
                 console.log(score4);
                 $.ajax({
-                    url: '/test_get_score',
+                    url: '/get_score',
                     contentType: 'application/json; charset=UTF-8',
                     data: {
                         menu: selected_menu
@@ -871,9 +877,34 @@
                     error: function(jqXHR, textStatus, errorThrown) {
                         console.log('get score error');
                         $('#loadingModal').modal('hide');
+                    }
+                });
+            }
+
+            var get_rating = function() {
+                $.ajax({
+                    url: '/get_rating',
+                    contentType: 'application/json; charset=UTF-8',
+                    data: {
+                        menu: selected_menu
                     },
-                    complete: function(JqXHR, textStatus) {
-                        console.log('get score complete');
+                    dataType: 'json',
+                    beforeSend: function(jqXHR, settings) {
+                        console.log('before get score');
+                    },
+                    success: function(data, textStatus, jqXHR) {
+                        console.log('get score success');
+                        console.log(data);
+
+                        for (i = 0; i < data.length; i++) {
+                            var target = '#menu' + selected_menu + ' #rating-' + (i+1);
+                            console.log(target);
+                            console.log(data[i].content);
+                            $(target).rating('update', parseFloat(data[i].content));
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log('get score error');
                     }
                 });
             }

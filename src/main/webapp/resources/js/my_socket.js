@@ -8,8 +8,8 @@ function connect() {
             
         });
 
-        stompClient.subscribe('/topic/rating1', function (data) {
-            console.log("/topic/rating1");
+        stompClient.subscribe('/topic/menu-' + selected_menu + '/rating1', function (data) {
+            console.log('/topic/menu-' + selected_menu + '/rating1');
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-1';
             console.log(target);
@@ -17,8 +17,8 @@ function connect() {
 
         });
 
-        stompClient.subscribe('/topic/rating2', function (data) {
-            console.log("/topic/rating2");
+        stompClient.subscribe('/topic/menu-' + selected_menu + '/rating2', function (data) {
+            console.log('/topic/menu-' + selected_menu + '/rating2');
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-2';
             console.log(target);
@@ -26,8 +26,8 @@ function connect() {
 
         });
 
-        stompClient.subscribe('/topic/rating3', function (data) {
-            console.log("/topic/rating3");
+        stompClient.subscribe('/topic/menu-' + selected_menu + '/rating3', function (data) {
+            console.log('/topic/menu-' + selected_menu + '/rating3');
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-3';
             console.log(target);
@@ -35,8 +35,8 @@ function connect() {
 
         });
 
-        stompClient.subscribe('/topic/rating4', function (data) {
-            console.log("/topic/rating4");
+        stompClient.subscribe('/topic/menu-' + selected_menu + '/rating4', function (data) {
+            console.log('/topic/menu-' + selected_menu + '/rating4');
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-4';
             console.log(target);
@@ -44,8 +44,8 @@ function connect() {
 
         });
 
-        stompClient.subscribe('/topic/rating5', function (data) {
-            console.log("/topic/rating5");
+        stompClient.subscribe('/topic/menu-' + selected_menu + '/rating5', function (data) {
+            console.log('/topic/menu-' + selected_menu + '/rating5');
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-5';
             console.log(target);
@@ -53,8 +53,8 @@ function connect() {
 
         });
 
-        stompClient.subscribe('/topic/rating6', function (data) {
-            console.log("/topic/rating6");
+        stompClient.subscribe('/topic/menu-' + selected_menu + '/rating6', function (data) {
+            console.log('/topic/menu-' + selected_menu + '/rating6');
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-6';
             console.log(target);
@@ -62,8 +62,8 @@ function connect() {
 
         });
 
-        stompClient.subscribe('/topic/rating7', function (data) {
-            console.log("/topic/rating7");
+        stompClient.subscribe('/topic/menu-' + selected_menu + '/rating7', function (data) {
+            console.log('/topic/menu-' + selected_menu + '/rating7');
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-7';
             console.log(target);
@@ -71,8 +71,8 @@ function connect() {
 
         });
 
-        stompClient.subscribe('/topic/rating8', function (data) {
-            console.log("/topic/rating8");
+        stompClient.subscribe('/topic/menu-' + selected_menu + '/rating8', function (data) {
+            console.log('/topic/menu-' + selected_menu + '/rating8');
             console.log(data);
             var target = '#menu' + selected_menu + ' #rating-8';
             console.log(target);

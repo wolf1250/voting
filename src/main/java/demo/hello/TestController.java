@@ -11,6 +11,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.*;
 
 @RestController
@@ -28,16 +29,16 @@ public class TestController {
     private static String DOMAIN = "voting-tomcat8.a3c1.starter-us-west-1.openshiftapps.com";//"localhost:8080";
 
     @RequestMapping("/test_send")
-    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-        this.template.convertAndSend("/topic/rating1", new Random().nextInt(5));
-        this.template.convertAndSend("/topic/rating2", new Random().nextInt(5));
-        this.template.convertAndSend("/topic/rating3", new Random().nextInt(5));
-        this.template.convertAndSend("/topic/rating4", new Random().nextInt(5));
-        this.template.convertAndSend("/topic/rating5", new Random().nextInt(5));
-        this.template.convertAndSend("/topic/rating6", new Random().nextInt(5));
-        this.template.convertAndSend("/topic/rating7", new Random().nextInt(5));
-        this.template.convertAndSend("/topic/rating8", new Random().nextInt(5));
-        return new Greeting("Hello, " + name + "!");
+    public Greeting greeting(@RequestParam(value = "menu", required = true) int menu) {
+        this.template.convertAndSend("/topic/menu-" + menu + "/rating1", new Random().nextInt(5));
+        this.template.convertAndSend("/topic/menu-" + menu + "/rating2", new Random().nextInt(5));
+        this.template.convertAndSend("/topic/menu-" + menu + "/rating3", new Random().nextInt(5));
+        this.template.convertAndSend("/topic/menu-" + menu + "/rating4", new Random().nextInt(5));
+        this.template.convertAndSend("/topic/menu-" + menu + "/rating5", new Random().nextInt(5));
+        this.template.convertAndSend("/topic/menu-" + menu + "/rating6", new Random().nextInt(5));
+        this.template.convertAndSend("/topic/menu-" + menu + "/rating7", new Random().nextInt(5));
+        this.template.convertAndSend("/topic/menu-" + menu + "/rating8", new Random().nextInt(5));
+        return new Greeting("Hello, World!");
     }
 
     @RequestMapping("/info")
@@ -46,7 +47,7 @@ public class TestController {
     }
 
     @RequestMapping("/remove")
-    public int removeResultByToken(@RequestParam(value = "token", required = true) String token){
+    public int removeResultByToken(@RequestParam(value = "token", required = true) String token) {
         System.out.println(token);
         return resultDAO.removeByToken(token);
     }
@@ -67,35 +68,44 @@ public class TestController {
         return new SubmitResult(res);
     }
 
-    @RequestMapping(value = "/voting_test2", method = RequestMethod.POST,
+    @RequestMapping(value = "/post_voting", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    public SubmitResult voting2(@RequestBody List<Map> listItem) {
-
+    public SubmitResult voting2(@RequestBody Map<String, Object> payload) {
         int row = 0;
+        DecimalFormat df = new DecimalFormat("#.#");
+
+        System.out.println(payload);
+        int menu = (Integer) payload.get("menu");
+        String token = (String) payload.get("token");
+
+        List<Map> listItem = (List) payload.get("rating");
         for (int i = 0; i < listItem.size(); i++) {
-            Map payload = listItem.get(i);
+            Map itme = listItem.get(i);
             System.out.println(payload);
 
-            Result item = new Result();
+            Result result = new Result();
 
-            int project_id = (Integer) payload.get("project_id");
-            double key_business = Double.valueOf((String)payload.get("key_business"));
-            double priority = Double.valueOf((String)payload.get("priority"));
-            String token = (String) payload.get("token");
+            int project_id = (Integer) itme.get("project_id");
+            double key_business = Double.valueOf((String) itme.get("key_business"));
+            double priority = Double.valueOf((String) itme.get("priority"));
 
-            item.setProjectID(project_id);
-            item.setToken(token);
-            item.setKeyBusiness(key_business);
-            item.setPriority(priority);
-            item.setModified(new Timestamp(new Date().getTime()));
+            System.out.println("target :: /topic/menu-" + menu + "/rating" + String.valueOf(i * 2 + 1));
+            System.out.println("target :: /topic/menu-" + menu + "/rating" + String.valueOf(i * 2 + 2));
+
+            result.setProjectID(project_id);
+            result.setToken(token);
+            result.setKeyBusiness(key_business);
+            result.setPriority(priority);
+            result.setModified(new Timestamp(new Date().getTime()));
+
             try {
-                row += resultDAO.create(item);
+                row += resultDAO.create(result);
                 Map map = resultDAO.average(project_id);
 
-                this.template.convertAndSend("/topic/rating" + String.valueOf(i * 2 + 1), map.get("avg_k"));
-                this.template.convertAndSend("/topic/rating" + String.valueOf(i * 2 + 2), map.get("avg_p"));
+                this.template.convertAndSend("/topic/menu-" + menu + "/rating" + String.valueOf(i * 2 + 1), df.format(map.get("avg_k")));
+                this.template.convertAndSend("/topic/menu-" + menu + "/rating" + String.valueOf(i * 2 + 2), df.format(map.get("avg_p")));
             } catch (DuplicateKeyException e) {
                 e.printStackTrace();
                 break;
@@ -104,7 +114,18 @@ public class TestController {
         return new SubmitResult(row);
     }
 
-    @RequestMapping("/test_get_score")
+    @RequestMapping("/get_random_score")
+    public List<Score> getRandomScore(@RequestParam(value = "menu", required = true) int menu) {
+        List<Score> rv = new ArrayList<Score>();
+        rv.add(new Score(new Random().nextInt(100)));
+        rv.add(new Score(new Random().nextInt(100)));
+        rv.add(new Score(new Random().nextInt(100)));
+        rv.add(new Score(new Random().nextInt(100)));
+
+        return rv;
+    }
+
+    @RequestMapping("/get_score")
     public List<Score> testGetScore(@RequestParam(value = "menu", required = true) int menu) {
         System.out.println("menu :: " + menu);
         Map map1 = resultDAO.average(menu * 4 - 3);
@@ -124,13 +145,7 @@ public class TestController {
             default:
                 return getGroup1Score(map1, map2, map3, map4);
         }
-        /*
-        List<Score> rv = new ArrayList<Score>();
-        rv.add(new Score(new Random().nextInt(100)));
-        rv.add(new Score(new Random().nextInt(100)));
-        rv.add(new Score(new Random().nextInt(100)));
-        rv.add(new Score(new Random().nextInt(100)));
-        */
+
 
     }
 
@@ -175,6 +190,46 @@ public class TestController {
         rv.add(new Score(new Project14Item((Double) map2.get("avg_k"), (Double) map1.get("avg_p")).getTotal()));
         rv.add(new Score(new Project15Item((Double) map3.get("avg_k"), (Double) map1.get("avg_p")).getTotal()));
         rv.add(new Score(new Project16Item((Double) map4.get("avg_k"), (Double) map1.get("avg_p")).getTotal()));
+
+        return rv;
+    }
+
+    @RequestMapping("/get_rating")
+    public List<Score> getRatingByMenu(@RequestParam(value = "menu", required = true) int menu) {
+        System.out.println("menu :: " + menu);
+        List<Score> rv = new ArrayList<Score>();
+
+        try {
+            Map map1 = resultDAO.average(menu * 4 - 3);
+            Map map2 = resultDAO.average(menu * 4 - 2);
+            Map map3 = resultDAO.average(menu * 4 - 1);
+            Map map4 = resultDAO.average(menu * 4);
+
+            rv.add(new Score((Double) map1.get("avg_k")));
+            rv.add(new Score((Double) map1.get("avg_p")));
+
+            rv.add(new Score((Double) map2.get("avg_k")));
+            rv.add(new Score((Double) map1.get("avg_p")));
+
+            rv.add(new Score((Double) map3.get("avg_k")));
+            rv.add(new Score((Double) map1.get("avg_p")));
+
+            rv.add(new Score((Double) map4.get("avg_k")));
+            rv.add(new Score((Double) map1.get("avg_p")));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            rv.add(new Score(0.0));
+            rv.add(new Score(0.0));
+
+            rv.add(new Score(0.0));
+            rv.add(new Score(0.0));
+
+            rv.add(new Score(0.0));
+            rv.add(new Score(0.0));
+
+            rv.add(new Score(0.0));
+        }
 
         return rv;
     }

@@ -216,6 +216,17 @@
             });
 
             $('.cookie').text($.cookie(('v3-token')));
+            
+            var stopRating = function(){
+                $('#rating-1').rating('refresh', {hoverEnabled: false, readonly: true});
+                $('#rating-2').rating('refresh', {hoverEnabled: false, readonly: true});
+                $('#rating-3').rating('refresh', {hoverEnabled: false, readonly: true});
+                $('#rating-4').rating('refresh', {hoverEnabled: false, readonly: true});
+                $('#rating-5').rating('refresh', {hoverEnabled: false, readonly: true});
+                $('#rating-6').rating('refresh', {hoverEnabled: false, readonly: true});
+                $('#rating-7').rating('refresh', {hoverEnabled: false, readonly: true});
+                $('#rating-8').rating('refresh', {hoverEnabled: false, readonly: true});
+            }
 
             $('.submit-btn').on('click', function() {
 
@@ -239,34 +250,35 @@
 
                 console.log(token);
 
-                var submit_data = [{
-                        project_id: 9,
-                        key_business: r1,
-                        priority: r2,
-                        token: token
-                    },
-                    {
-                        project_id: 10,
-                        key_business: r3,
-                        priority: r4,
-                        token: token
-                    },
-                    {
-                        project_id: 11,
-                        key_business: r5,
-                        priority: r6,
-                        token: token
-                    },
-                    {
-                        project_id: 12,
-                        key_business: r7,
-                        priority: r8,
-                        token: token
-                    }
-                ];
+                 var submit_data = {
+                    menu: 3,
+                    token: token,
+                    rating: [
+                        {
+                            project_id: 9,
+                            key_business: r1,
+                            priority: r2,
+                        },
+                        {
+                            project_id: 10,
+                            key_business: r3,
+                            priority: r4,
+                        },
+                        {
+                            project_id: 11,
+                            key_business: r5,
+                            priority: r6,
+                        },
+                        {
+                            project_id: 12,
+                            key_business: r7,
+                            priority: r8,
+                        }
+                    ]
+                };
 
                 $.ajax({
-                    url: './voting_test2',
+                    url: './post_voting',
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(submit_data),
@@ -289,6 +301,7 @@
 
                         setTimeout(function() {
                             $('.submit-btn').attr('disabled', true);
+                            stopRating();
                             $('#loadingModal').modal('hide');
                             if (data.result === 'false') {
                                 $('#repeatModal').modal('show');
